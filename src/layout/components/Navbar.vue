@@ -6,6 +6,22 @@
 
     <div class="right-menu">
       <template v-if="appStore.device !== 'mobile'">
+
+
+        <div class="right-menu-language">
+          <el-dropdown >
+            <el-button text>
+              Switch Language<el-icon class="el-icon--right"><arrow-down /></el-icon>
+            </el-button>
+            <template #dropdown>
+              <el-dropdown-menu>
+                <el-dropdown-item @click="toggle('zhCn')">中文</el-dropdown-item>
+                <el-dropdown-item @click="toggle('en')">English</el-dropdown-item>
+              </el-dropdown-menu>
+            </template>
+          </el-dropdown>
+        </div>
+
         <header-search id="header-search" class="right-menu-item" />
 
         <el-tooltip content="源码地址" effect="dark" placement="bottom">
@@ -60,6 +76,19 @@ import RuoYiDoc from '@/components/RuoYi/Doc'
 import useAppStore from '@/store/modules/app'
 import useUserStore from '@/store/modules/user'
 import useSettingsStore from '@/store/modules/settings'
+
+import zhCn from 'element-plus/es/locale/lang/zh-cn';
+import en from 'element-plus/es/locale/lang/en';
+// 这个地方要注意由于没好好看文档我以为 locale 的传参是字符串，导致产生了 bug
+const language = ref(localStorage.getItem('lang') === 'en' ? en : zhCn);
+
+const toggle = (value) => {
+  // language.value = language.value === 'zhCn' ? 'en' : 'zhCn'
+  language.value = value;
+  localStorage.setItem('lang', language.value)
+  //刷新浏览器
+  location.reload();
+}
 
 const appStore = useAppStore()
 const userStore = useUserStore()
@@ -163,6 +192,9 @@ function setLayout() {
       }
     }
 
+    .right-menu-language {
+      margin-top: 8px;
+    }
     .avatar-container {
       margin-right: 40px;
 
