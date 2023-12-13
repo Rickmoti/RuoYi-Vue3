@@ -81,4 +81,9 @@ app.use(ElementPlus, {
   size: Cookies.get('size') || 'default'
 })
 
+// main.ts 中添加 app.use(i18n)
+import i18n from '@/locales'
+app.use(i18n);
+
+
 app.mount('#app')
