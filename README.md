@@ -70,6 +70,10 @@ yarn dev
 
 <table>
     <tr>
+        <td><img src="doc/images/button-en.png"/></td>
+        <td><img src="doc/images/menu-en.png"/></td>
+    </tr>
+    <tr>
         <td><img src="doc/images/tagView-en.png"/></td>
         <td><img src="doc/images/menu-en.png"/></td>
     </tr>

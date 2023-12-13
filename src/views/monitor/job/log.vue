@@ -51,8 +51,8 @@
             ></el-date-picker>
          </el-form-item>
          <el-form-item>
-            <el-button type="primary" icon="Search" @click="handleQuery">搜索</el-button>
-            <el-button icon="Refresh" @click="resetQuery">重置</el-button>
+            <el-button type="primary" icon="Search" @click="handleQuery">{{$t('button.search')}}</el-button>
+            <el-button icon="Refresh" @click="resetQuery">{{$t('button.reset')}}</el-button>
          </el-form-item>
       </el-form>
 
@@ -65,7 +65,7 @@
                :disabled="multiple"
                @click="handleDelete"
                v-hasPermi="['monitor:job:remove']"
-            >删除</el-button>
+            >{{$t('button.del')}}</el-button>
          </el-col>
          <el-col :span="1.5">
             <el-button
@@ -74,7 +74,7 @@
                icon="Delete"
                @click="handleClean"
                v-hasPermi="['monitor:job:remove']"
-            >清空</el-button>
+            >{{$t('button.clear')}}</el-button>
          </el-col>
          <el-col :span="1.5">
             <el-button
@@ -83,12 +83,12 @@
                icon="Download"
                @click="handleExport"
                v-hasPermi="['monitor:job:export']"
-            >导出</el-button>
+            >{{$t('button.export')}}</el-button>
          </el-col>
          <el-col :span="1.5">
-            <el-button 
-               type="warning" 
-               plain 
+            <el-button
+               type="warning"
+               plain
                icon="Close"
                @click="handleClose"
             >关闭</el-button>
@@ -119,7 +119,7 @@
          </el-table-column>
          <el-table-column label="操作" align="center" class-name="small-padding fixed-width">
             <template #default="scope">
-               <el-button link type="primary" icon="View" @click="handleView(scope.row)" v-hasPermi="['monitor:job:query']">详细</el-button>
+               <el-button link type="primary" icon="View" @click="handleView(scope.row)" v-hasPermi="['monitor:job:query']">{{$t('button.detail')}}</el-button>
             </template>
          </el-table-column>
       </el-table>

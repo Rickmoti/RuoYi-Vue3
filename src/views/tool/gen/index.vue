@@ -30,8 +30,8 @@
         ></el-date-picker>
       </el-form-item>
       <el-form-item>
-        <el-button type="primary" icon="Search" @click="handleQuery">搜索</el-button>
-        <el-button icon="Refresh" @click="resetQuery">重置</el-button>
+        <el-button type="primary" icon="Search" @click="handleQuery">{{$t('button.search')}}</el-button>
+        <el-button icon="Refresh" @click="resetQuery">{{$t('button.reset')}}</el-button>
       </el-form-item>
     </el-form>
 
@@ -52,7 +52,7 @@
           icon="Upload"
           @click="openImportTable"
           v-hasPermi="['tool:gen:import']"
-        >导入</el-button>
+        >{{$t('button.import')}}</el-button>
       </el-col>
       <el-col :span="1.5">
         <el-button
@@ -62,7 +62,7 @@
           :disabled="single"
           @click="handleEditTable"
           v-hasPermi="['tool:gen:edit']"
-        >修改</el-button>
+        >{{$t('button.edit')}}</el-button>
       </el-col>
       <el-col :span="1.5">
         <el-button
@@ -72,7 +72,7 @@
           :disabled="multiple"
           @click="handleDelete"
           v-hasPermi="['tool:gen:remove']"
-        >删除</el-button>
+        >{{$t('button.del')}}</el-button>
       </el-col>
       <right-toolbar v-model:showSearch="showSearch" @queryTable="getList"></right-toolbar>
     </el-row>
@@ -112,7 +112,7 @@
           <el-tooltip content="编辑" placement="top">
             <el-button link type="primary" icon="Edit" @click="handleEditTable(scope.row)" v-hasPermi="['tool:gen:edit']"></el-button>
           </el-tooltip>
-          <el-tooltip content="删除" placement="top">
+          <el-tooltip :content="$t('button.del')" placement="top">
             <el-button link type="primary" icon="Delete" @click="handleDelete(scope.row)" v-hasPermi="['tool:gen:remove']"></el-button>
           </el-tooltip>
           <el-tooltip content="同步" placement="top">

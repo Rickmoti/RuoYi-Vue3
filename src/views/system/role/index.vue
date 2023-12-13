@@ -45,8 +45,8 @@
             ></el-date-picker>
          </el-form-item>
          <el-form-item>
-            <el-button type="primary" icon="Search" @click="handleQuery">搜索</el-button>
-            <el-button icon="Refresh" @click="resetQuery">重置</el-button>
+            <el-button type="primary" icon="Search" @click="handleQuery">{{$t('button.search')}}</el-button>
+            <el-button icon="Refresh" @click="resetQuery">{{$t('button.reset')}}</el-button>
          </el-form-item>
       </el-form>
       <el-row :gutter="10" class="mb8">
@@ -57,7 +57,7 @@
                icon="Plus"
                @click="handleAdd"
                v-hasPermi="['system:role:add']"
-            >新增</el-button>
+            >{{$t('button.add')}}</el-button>
          </el-col>
          <el-col :span="1.5">
             <el-button
@@ -67,7 +67,7 @@
                :disabled="single"
                @click="handleUpdate"
                v-hasPermi="['system:role:edit']"
-            >修改</el-button>
+            >{{$t('button.edit')}}</el-button>
          </el-col>
          <el-col :span="1.5">
             <el-button
@@ -77,7 +77,7 @@
                :disabled="multiple"
                @click="handleDelete"
                v-hasPermi="['system:role:remove']"
-            >删除</el-button>
+            >{{$t('button.del')}}</el-button>
          </el-col>
          <el-col :span="1.5">
             <el-button
@@ -86,7 +86,7 @@
                icon="Download"
                @click="handleExport"
                v-hasPermi="['system:role:export']"
-            >导出</el-button>
+            >{{$t('button.export')}}</el-button>
          </el-col>
          <right-toolbar v-model:showSearch="showSearch" @queryTable="getList"></right-toolbar>
       </el-row>
@@ -115,10 +115,10 @@
          </el-table-column>
          <el-table-column label="操作" align="center" class-name="small-padding fixed-width">
             <template #default="scope">
-              <el-tooltip content="修改" placement="top" v-if="scope.row.roleId !== 1">
+              <el-tooltip :content="$t('button.edit')" placement="top" v-if="scope.row.roleId !== 1">
                 <el-button link type="primary" icon="Edit" @click="handleUpdate(scope.row)" v-hasPermi="['system:role:edit']"></el-button>
               </el-tooltip>
-              <el-tooltip content="删除" placement="top" v-if="scope.row.roleId !== 1">
+              <el-tooltip :content="$t('button.del')" placement="top" v-if="scope.row.roleId !== 1">
                 <el-button link type="primary" icon="Delete" @click="handleDelete(scope.row)" v-hasPermi="['system:role:remove']"></el-button>
               </el-tooltip>
               <el-tooltip content="数据权限" placement="top" v-if="scope.row.roleId !== 1">
@@ -169,7 +169,7 @@
                </el-radio-group>
             </el-form-item>
             <el-form-item label="菜单权限">
-               <el-checkbox v-model="menuExpand" @change="handleCheckedTreeExpand($event, 'menu')">展开/折叠</el-checkbox>
+               <el-checkbox v-model="menuExpand" @change="handleCheckedTreeExpand($event, 'menu')">{{$t('button.expandCollapse')}}</el-checkbox>
                <el-checkbox v-model="menuNodeAll" @change="handleCheckedTreeNodeAll($event, 'menu')">全选/全不选</el-checkbox>
                <el-checkbox v-model="form.menuCheckStrictly" @change="handleCheckedTreeConnect($event, 'menu')">父子联动</el-checkbox>
                <el-tree
@@ -189,8 +189,8 @@
          </el-form>
          <template #footer>
             <div class="dialog-footer">
-               <el-button type="primary" @click="submitForm">确 定</el-button>
-               <el-button @click="cancel">取 消</el-button>
+               <el-button type="primary" @click="submitForm">{{$t('button.confirm')}}</el-button>
+               <el-button @click="cancel">{{$t('button.cancel')}}</el-button>
             </div>
          </template>
       </el-dialog>
@@ -215,7 +215,7 @@
                </el-select>
             </el-form-item>
             <el-form-item label="数据权限" v-show="form.dataScope == 2">
-               <el-checkbox v-model="deptExpand" @change="handleCheckedTreeExpand($event, 'dept')">展开/折叠</el-checkbox>
+               <el-checkbox v-model="deptExpand" @change="handleCheckedTreeExpand($event, 'dept')">{{$t('button.expandCollapse')}}</el-checkbox>
                <el-checkbox v-model="deptNodeAll" @change="handleCheckedTreeNodeAll($event, 'dept')">全选/全不选</el-checkbox>
                <el-checkbox v-model="form.deptCheckStrictly" @change="handleCheckedTreeConnect($event, 'dept')">父子联动</el-checkbox>
                <el-tree
@@ -233,8 +233,8 @@
          </el-form>
          <template #footer>
             <div class="dialog-footer">
-               <el-button type="primary" @click="submitDataScope">确 定</el-button>
-               <el-button @click="cancelDataScope">取 消</el-button>
+               <el-button type="primary" @click="submitDataScope">{{$t('button.confirm')}}</el-button>
+               <el-button @click="cancelDataScope">{{$t('button.cancel')}}</el-button>
             </div>
          </template>
       </el-dialog>

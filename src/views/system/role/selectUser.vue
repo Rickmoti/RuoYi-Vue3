@@ -21,8 +21,8 @@
             />
          </el-form-item>
          <el-form-item>
-            <el-button type="primary" icon="Search" @click="handleQuery">搜索</el-button>
-            <el-button icon="Refresh" @click="resetQuery">重置</el-button>
+            <el-button type="primary" icon="Search" @click="handleQuery">{{$t('button.search')}}</el-button>
+            <el-button icon="Refresh" @click="resetQuery">{{$t('button.reset')}}</el-button>
          </el-form-item>
       </el-form>
       <el-row>
@@ -53,8 +53,8 @@
       </el-row>
       <template #footer>
          <div class="dialog-footer">
-            <el-button type="primary" @click="handleSelectUser">确 定</el-button>
-            <el-button @click="visible = false">取 消</el-button>
+            <el-button type="primary" @click="handleSelectUser">{{$t('button.confirm')}}</el-button>
+            <el-button @click="visible = false">{{$t('button.cancel')}}</el-button>
          </div>
       </template>
    </el-dialog>

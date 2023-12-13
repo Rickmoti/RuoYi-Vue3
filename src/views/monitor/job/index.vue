@@ -31,8 +31,8 @@
             </el-select>
          </el-form-item>
          <el-form-item>
-            <el-button type="primary" icon="Search" @click="handleQuery">搜索</el-button>
-            <el-button icon="Refresh" @click="resetQuery">重置</el-button>
+            <el-button type="primary" icon="Search" @click="handleQuery">{{$t('button.search')}}</el-button>
+            <el-button icon="Refresh" @click="resetQuery">{{$t('button.reset')}}</el-button>
          </el-form-item>
       </el-form>
 
@@ -44,7 +44,7 @@
                icon="Plus"
                @click="handleAdd"
                v-hasPermi="['monitor:job:add']"
-            >新增</el-button>
+            >{{$t('button.add')}}</el-button>
          </el-col>
          <el-col :span="1.5">
             <el-button
@@ -54,7 +54,7 @@
                :disabled="single"
                @click="handleUpdate"
                v-hasPermi="['monitor:job:edit']"
-            >修改</el-button>
+            >{{$t('button.edit')}}</el-button>
          </el-col>
          <el-col :span="1.5">
             <el-button
@@ -64,7 +64,7 @@
                :disabled="multiple"
                @click="handleDelete"
                v-hasPermi="['monitor:job:remove']"
-            >删除</el-button>
+            >{{$t('button.del')}}</el-button>
          </el-col>
          <el-col :span="1.5">
             <el-button
@@ -73,7 +73,7 @@
                icon="Download"
                @click="handleExport"
                v-hasPermi="['monitor:job:export']"
-            >导出</el-button>
+            >{{$t('button.export')}}</el-button>
          </el-col>
          <el-col :span="1.5">
             <el-button
@@ -82,7 +82,7 @@
                icon="Operation"
                @click="handleJobLog"
                v-hasPermi="['monitor:job:query']"
-            >日志</el-button>
+            >{{$t('button.log')}}</el-button>
          </el-col>
          <right-toolbar v-model:showSearch="showSearch" @queryTable="getList"></right-toolbar>
       </el-row>
@@ -110,19 +110,19 @@
          </el-table-column>
          <el-table-column label="操作" align="center" width="200" class-name="small-padding fixed-width">
             <template #default="scope">
-               <el-tooltip content="修改" placement="top">
+               <el-tooltip :content="$t('button.edit')" placement="top">
                   <el-button link type="primary" icon="Edit" @click="handleUpdate(scope.row)" v-hasPermi="['monitor:job:edit']"></el-button>
                </el-tooltip>
-               <el-tooltip content="删除" placement="top">
+               <el-tooltip :content="$t('button.del')" placement="top">
                   <el-button link type="primary" icon="Delete" @click="handleDelete(scope.row)" v-hasPermi="['monitor:job:remove']"></el-button>
                </el-tooltip>
-               <el-tooltip content="执行一次" placement="top">
+               <el-tooltip :content="$t('button.runOnce')" placement="top">
                   <el-button link type="primary" icon="CaretRight" @click="handleRun(scope.row)" v-hasPermi="['monitor:job:changeStatus']"></el-button>
                </el-tooltip>
-               <el-tooltip content="任务详细" placement="top">
+               <el-tooltip :content="$t('button.detailTask')" placement="top">
                   <el-button link type="primary" icon="View" @click="handleView(scope.row)" v-hasPermi="['monitor:job:query']"></el-button>
                </el-tooltip>
-               <el-tooltip content="调度日志" placement="top">
+               <el-tooltip :content="$t('button.schedulingLog')" placement="top">
                   <el-button link type="primary" icon="Operation" @click="handleJobLog(scope.row)" v-hasPermi="['monitor:job:query']"></el-button>
                </el-tooltip>
             </template>
@@ -222,8 +222,8 @@
          </el-form>
          <template #footer>
             <div class="dialog-footer">
-               <el-button type="primary" @click="submitForm">确 定</el-button>
-               <el-button @click="cancel">取 消</el-button>
+               <el-button type="primary" @click="submitForm">{{$t('button.confirm')}}</el-button>
+               <el-button @click="cancel">{{$t('button.cancel')}}</el-button>
             </div>
          </template>
       </el-dialog>
