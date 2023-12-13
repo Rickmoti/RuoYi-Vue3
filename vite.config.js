@@ -24,21 +24,22 @@ export default defineConfig(({ mode, command }) => {
       extensions: ['.mjs', '.js', '.ts', '.jsx', '.tsx', '.json', '.vue']
     },
     // vite 相关配置
+    // 反向代理解决跨域问题
     server: {
-      port: 80,
-      host: true,
-      open: true,
+      // host: 'localhost', // 只能本地访问
+      host: '0.0.0.0', // 局域网别人也可访问
+      port: Number(env.VITE_APP_PORT),
+      // 运行时自动打开浏览器
+      // open: true,
       proxy: {
-        // https://cn.vitejs.dev/config/#server-proxy
-        '/dev-api': {
-          target: 'http://localhost:8080',
+        [env.VITE_APP_BASE_API]: {
+          target: env.VITE_APP_SERVICE_API,
           changeOrigin: true,
-          rewrite: (p) => p.replace(/^\/dev-api/, '')
-        }
-      }
+          rewrite: (path) => path.replace(new RegExp('^' + env.VITE_APP_BASE_API), ''),
+        },
+      },
     },
-    //fix:error:stdin>:7356:1: warning: "@charset" must be the first rule in the file
-    css: {
+   css: {
       postcss: {
         plugins: [
           {
