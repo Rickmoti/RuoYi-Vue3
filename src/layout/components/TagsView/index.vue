@@ -12,7 +12,7 @@
         @click.middle="!isAffix(tag) ? closeSelectedTag(tag) : ''"
         @contextmenu.prevent="openMenu(tag, $event)"
       >
-        {{ tag.title }}
+        {{ menusTitle(tag.title) }}
         <span v-if="!isAffix(tag)" @click.prevent.stop="closeSelectedTag(tag)">
           <close class="el-icon-close" style="width: 1em; height: 1em;vertical-align: middle;" />
         </span>
@@ -47,6 +47,14 @@ import { getNormalPath } from '@/utils/ruoyi'
 import useTagsViewStore from '@/store/modules/tagsView'
 import useSettingsStore from '@/store/modules/settings'
 import usePermissionStore from '@/store/modules/permission'
+import i18n from '@/locales'
+
+function menusTitle(item) {
+  if (i18n.global.te('menus.' + item)){
+    return i18n.global.t('menus.' + item);
+  }
+  return item;
+}
 
 const visible = ref(false);
 const top = ref(0);
